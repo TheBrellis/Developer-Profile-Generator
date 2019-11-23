@@ -21,7 +21,7 @@ function promptUser(){
 promptUser()
     .then((answers) => {
         const profile = new BuildProfile(answers);
-        profile.callAPI();
+        profile.buildHTML();
     })
  
 

@@ -8,7 +8,7 @@ class BuildProfile {
         this.color = answers.color;
         this.user = answers.user;
     }
-    callAPI(){
+    buildHTML(){
         const queryUrl = `https://api.github.com/users/${this.user}`
         axios
         .get(queryUrl)
