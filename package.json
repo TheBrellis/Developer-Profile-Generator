@@ -1,0 +1,22 @@
+{
+  "name": "developer-profile-generator",
+  "version": "1.0.0",
+  "description": "A command-line application that dynamically generates a PDF profile from a GitHub username ## Assignment Details: ## Unit 09 Node.js and ES6+ Homework: Developer Profile Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBrellis/Developer-Profile-Generator.git"
+  },
+  "author": "TheBrellis",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  },
+  "bugs": {
+    "url": "https://github.com/TheBrellis/Developer-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/TheBrellis/Developer-Profile-Generator#readme"
+}
