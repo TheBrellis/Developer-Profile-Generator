@@ -1,3 +1,4 @@
+const generatHTML = require("./generateHTML.js");
 const fs = require("fs");
 const util = require("util");
 const axios = require("axios");
@@ -14,22 +15,21 @@ class BuildProfile {
         .get(queryUrl)
         .then((res)=> {
             const data = {
+                color: this.color;
                 proPicUrl: res.data.avatar_url,
                 name: res.data.name,
-                work: res.data.company,
+                employer: res.data.company,
                 loc: res.data.location,
                 gitUrl: res.data.html_url,
+                blog: res.data.blog.
                 bio: res.data.bio,
                 numRepos: res.data.public_repos,
                 gitStars: 1000000,
                 followers: res.data.followers,
                 following: res.data.following
             };
-        })
-    }
-    createHTML(){
-       
-
+          //  generateHTML(data);
+        });
     }
     convertToPDF(){
 
