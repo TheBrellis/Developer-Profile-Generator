@@ -1,34 +1,57 @@
+const BuildProfile = require("./buildProfile");
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
-
 const writeFileAsync = util.promisify(fs.writeFile);
-return inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your name?"
-    },
-    {
-      type: "input",
-      name: "location",
-      message: "Where are you from?"
-    },
+//////////////////////////////////////////////////////////
+
+function promptUser(){
+    return inquirer.prompt([
+        {
+          type: "list",
+          name: "color",
+          message: "What is your favorite color?",
+          choices: ["green","blue","pink","red"]
+        },
+        {
+          type: "input",
+          name: "username",
+          message: "What is your GitHub Username?"
+        }
+    ]);
+    }
+
+promptUser()
+    .then(function(answers) {
+        console.log(answers);
+        const color = answers.color;
+        const username = answers.username;
+    })
+ /*
+const profile = new BuildProfile(color,username);
+
+console.log(profile);
 
 
 
 
-const questions = [
-  
-];
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function writeToFile(fileName, data) {
  
 }
-
-function init() {
-
-init();
 
 /* 
 command line app that builds a pdf profile
