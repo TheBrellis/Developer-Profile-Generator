@@ -1,8 +1,5 @@
 const BuildProfile = require("./buildProfile");
 const inquirer = require("inquirer");
-const fs = require("fs");
-const util = require("util");
-const writeFileAsync = util.promisify(fs.writeFile);
 //////////////////////////////////////////////////////////
 
 function promptUser(){
@@ -15,7 +12,7 @@ function promptUser(){
         },
         {
           type: "input",
-          name: "username",
+          name: "user",
           message: "What is your GitHub Username?"
         }
     ]);
@@ -24,7 +21,7 @@ function promptUser(){
 promptUser()
     .then((answers) => {
         const profile = new BuildProfile(answers);
-        profile.console();
+        profile.callAPI();
     })
  
 
