@@ -11,7 +11,7 @@ function promptUser(){
           type: "list",
           name: "color",
           message: "What is your favorite color?",
-          choices: ["green","blue","pink","red"]
+          choices: ["Green","Blue","Pink","Red"]
         },
         {
           type: "input",
@@ -22,15 +22,11 @@ function promptUser(){
     }
 
 promptUser()
-    .then(function(answers) {
-        console.log(answers);
-        const color = answers.color;
-        const username = answers.username;
+    .then((answers) => {
+        const profile = new BuildProfile(answers);
+        profile.console();
     })
- /*
-const profile = new BuildProfile(color,username);
-
-console.log(profile);
+ 
 
 
 
@@ -58,11 +54,6 @@ command line app that builds a pdf profile
 
 INDEX.JS
 
-    prompt user for input
-    > favColor
-    >gitHub username
-
-    create object using Generate Profile constructor
 
     generate html
 

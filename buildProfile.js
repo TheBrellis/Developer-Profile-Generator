@@ -1,9 +1,19 @@
 
 class BuildProfile {
-    constructor(color, username){
-        this.color = color;
-        this.username = username;
+    constructor(answers){
+        this.color = answers.color;
+        this.username = answers.username;
     }
+    callAPI(URL){
+
+    }
+    createHTML(){
+
+    }
+    convertToPDF(){
+
+    }
+    openPDF(){}
 }
 
 module.exports = BuildProfile;
