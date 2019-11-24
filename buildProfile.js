@@ -6,7 +6,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 //////////////////////////////////////////////////////
 class BuildProfile {
     constructor(answers,generateHTML){
-        this.color = answers.color;
+        this.color = answers.color.toLowerCase();
         this.user = answers.user;
     }
     buildHTML(){
@@ -30,7 +30,6 @@ class BuildProfile {
             };
             ;
            const page = generateHTML(data);
-            console.log(page);
         }).catch((err) => {
             console.log(err)
         });
