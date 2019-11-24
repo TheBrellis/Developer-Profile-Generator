@@ -1,6 +1,7 @@
 
 const BuildProfile = require("./buildProfile");
 const inquirer = require("inquirer");
+
 //////////////////////////////////////////////////////////
 
 function promptUser(){
@@ -23,6 +24,7 @@ promptUser()
     .then((answers) => {
         const profile = new BuildProfile(answers);
         profile.buildHTML();
+        profile.toPDF();
     })
  
 

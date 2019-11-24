@@ -2,6 +2,7 @@ const generateHTML = require("./generateHTML.js");
 const fs = require("fs");
 const util = require("util");
 const axios = require("axios");
+const pdfKit = require("pdfkit");
 const writeFileAsync = util.promisify(fs.writeFile);
 //////////////////////////////////////////////////////
 class BuildProfile {
@@ -43,7 +44,9 @@ class BuildProfile {
         console.log("Profile has been saved!");
         });
     }
-    ///convertToPDF(){}
+    toPDF(){
+        const pdfDoc = new pdfKit;
+    }
    // openPDF(){}
 }
 
