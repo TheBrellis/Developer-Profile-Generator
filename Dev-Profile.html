@@ -1,32 +1,4 @@
-const colors = {
-    green: {
-      wrapperBackground: "#E6E1C3",
-      headerBackground: "#C1C72C",
-      headerColor: "black",
-      photoBorderColor: "#black"
-    },
-    blue: {
-      wrapperBackground: "#5F64D3",
-      headerBackground: "#26175A",
-      headerColor: "white",
-      photoBorderColor: "#73448C"
-    },
-    pink: {
-      wrapperBackground: "#879CDF",
-      headerBackground: "#FF8374",
-      headerColor: "white",
-      photoBorderColor: "#FEE24C"
-    },
-    red: {
-      wrapperBackground: "#DE9967",
-      headerBackground: "#870603",
-      headerColor: "white",
-      photoBorderColor: "white"
-    }
-  };
 
-  function generateHTML(data) {
-    return `
     <!DOCTYPE html>
     <html lang="en">
     
@@ -61,7 +33,7 @@ const colors = {
             }
     
             .wrapper {
-                background-color: ${colors[data.color].wrapperBackground};
+                background-color: #E6E1C3;
                 padding-top: 100px;
             }
     
@@ -118,8 +90,8 @@ const colors = {
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
-                background-color: ${colors[data.color].headerBackground};
-                color: ${colors[data.color].headerColor};
+                background-color: #C1C72C;
+                color: black;
                 padding: 10px;
                 width: 95%;
                 border-radius: 6px;
@@ -131,7 +103,7 @@ const colors = {
                 border-radius: 50%;
                 object-fit: cover;
                 margin-top: -75px;
-                border: 6px solid ${colors[data.color].photoBorderColor};
+                border: 6px solid #black;
                 box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
             }
     
@@ -180,8 +152,8 @@ const colors = {
             .card {
                 padding: 20px;
                 border-radius: 6px;
-                background-color: ${colors[data.color].headerBackground};
-                color: ${colors[data.color].headerColor};
+                background-color: #C1C72C;
+                color: black;
                 margin: 20px;
             }
     
@@ -208,15 +180,15 @@ const colors = {
     <body class="wrapper">
         <header>
             <div class="photo-header">
-                <img src=${data.proPicUrl}>
+                <img src=https://avatars2.githubusercontent.com/u/49567495?v=4>
                 <h1>Hi!</h1>
-                <h1>My name is ${data.name}!</h1>
-                <h1 class="workExp-date">Currently at ${data.employer}
+                <h1>My name is Brian R Ellis!</h1>
+                <h1 class="workExp-date">Currently at Burndy LLC
                 </h1>
                 <nav class=links-nav>
-                    <a class="nav-link">${data.loc}</a>
-                    <a class="nav-link" href=${data.gitUrl}>GitHub</a>
-                    <a class="nav-link" href=${data.blog}>Blog</a>
+                    <a class="nav-link">Dover, New Hampshire</a>
+                    <a class="nav-link" href=https://github.com/TheBrellis>GitHub</a>
+                    <a class="nav-link" href=>Blog</a>
                     <!--What blog?-->
                 </nav>
             </div>
@@ -225,20 +197,20 @@ const colors = {
             <div class = "container">
                 <div class="row">
                     <div class="col">
-                        <h3>${data.bio}</h3>
+                        <h3>A student learning how to program</h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="card">
                             <h4>Public Repositories</h4>
-                            <h5>${data.numRepos}</h4>
+                            <h5>13</h4>
                         </div>
                     </div>
                     <div class="col">
                             <div class="card">
                                 <h4>Followers</h4>
-                                <h4>${data.followers}</h4>
+                                <h4>0</h4>
                             </div>
                     </div>
                 </div>
@@ -246,13 +218,13 @@ const colors = {
                     <div class="col">
                         <div class="card">
                             <h4>GitHub Stars</h4>
-                            <h4>${data.gitStars}</h4>
+                            <h4>1000000</h4>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card">
                             <h4>Following</h4>
-                            <h4>${data.following}</h4>
+                            <h4>0</h4>
                         </div>
                     </div>
                 </div>
@@ -260,7 +232,4 @@ const colors = {
         </main>
     </body>
     </html>
-    `};
-
-
-module.exports = generateHTML;
+    
