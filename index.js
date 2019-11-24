@@ -1,3 +1,4 @@
+
 const BuildProfile = require("./buildProfile");
 const inquirer = require("inquirer");
 //////////////////////////////////////////////////////////
@@ -45,25 +46,3 @@ promptUser()
 function writeToFile(fileName, data) {
  
 }
-
-/* 
-command line app that builds a pdf profile
-
-INDEX.JS
-
-
-    generate html
-
-    print/convert to pdf
-
-GENERATE-PROFILE.JS
- > constructor
-    - Favorite Color
-    - github user name
-    - URL?
- > methods:
-    - call Ajax and return object & assign object values to variables
-    - generate HTML
-    - convert HTML to PDF
-    - publish PDF to page
-*/

@@ -1,11 +1,11 @@
-const generatHTML = require("./generateHTML.js");
+const generateHTML = require("./generateHTML.js");
 const fs = require("fs");
 const util = require("util");
 const axios = require("axios");
 const writeFileAsync = util.promisify(fs.writeFile);
 //////////////////////////////////////////////////////
 class BuildProfile {
-    constructor(answers){
+    constructor(answers,generateHTML){
         this.color = answers.color;
         this.user = answers.user;
     }
@@ -15,26 +15,28 @@ class BuildProfile {
         .get(queryUrl)
         .then((res)=> {
             const data = {
-                color: this.color;
+                color: this.color,
                 proPicUrl: res.data.avatar_url,
                 name: res.data.name,
                 employer: res.data.company,
                 loc: res.data.location,
                 gitUrl: res.data.html_url,
-                blog: res.data.blog.
+                blog: res.data.blog,
                 bio: res.data.bio,
                 numRepos: res.data.public_repos,
                 gitStars: 1000000,
                 followers: res.data.followers,
                 following: res.data.following
             };
-          //  generateHTML(data);
+            ;
+           const page = generateHTML(data);
+            console.log(page);
+        }).catch((err) => {
+            console.log(err)
         });
     }
-    convertToPDF(){
-
-    }
-    openPDF(){}
+    ///convertToPDF(){}
+   // openPDF(){}
 }
 
 module.exports = BuildProfile;
