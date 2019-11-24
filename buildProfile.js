@@ -28,20 +28,19 @@ class BuildProfile {
                 followers: res.data.followers,
                 following: res.data.following
             };
-            ;
            const page = generateHTML(data);
            this.writeFile(page);
         }).catch((err) => {
             console.log(err)
         });
     }
-    writeFile(page){
-        fs.writeFile("Dev-Profile.html",page, (err) => {
-            if(err) {
-                throw err;
-            }
-        console.log("Profile has been saved!");
-        });
+        writeFile(page){
+            fs.writeFile("Dev-Profile.html",page, (err) => {
+                if(err) {
+                    throw err;
+                }
+            console.log("Profile has been saved!");
+            });
     }
     ///convertToPDF(){}
    // openPDF(){}

@@ -217,7 +217,6 @@ const colors = {
                     <a class="nav-link">${data.loc}</a>
                     <a class="nav-link" href=${data.gitUrl}>GitHub</a>
                     <a class="nav-link" href=${data.blog}>Blog</a>
-                    <!--What blog?-->
                 </nav>
             </div>
         </header>
