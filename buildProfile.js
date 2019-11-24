@@ -2,13 +2,22 @@ const generateHTML = require("./generateHTML.js");
 const fs = require("fs");
 const util = require("util");
 const axios = require("axios");
-const pdfKit = require("pdfkit");
+const HTMLToPDF = require('convert-html-to-pdf');
+const puppeteer = require('puppeteer');
 const writeFileAsync = util.promisify(fs.writeFile);
 //////////////////////////////////////////////////////
 class BuildProfile {
     constructor(answers){
         this.color = answers.color.toLowerCase();
         this.user = answers.user;
+    }
+    writeFile(newProf){
+        fs.writeFile("Dev-Profile.pdf",newProf, (err) => {
+            if(err) {
+                throw err;
+            }
+        console.log("Profile has been saved!");
+        });
     }
     buildHTML(){
         const queryUrl = `https://api.github.com/users/${this.user}`
@@ -31,22 +40,23 @@ class BuildProfile {
             };
             ;
            const page = generateHTML(data);
-           this.writeFile(page);
+           this.toPDF(page);
+           
         }).catch((err) => {
             console.log(err)
         });
     }
-    writeFile(page){
-        fs.writeFile("Dev-Profile.html",page, (err) => {
-            if(err) {
-                throw err;
-            }
-        console.log("Profile has been saved!");
-        });
-    }
-    toPDF(){
-        const pdfDoc = new pdfKit;
-    }
+    toPDF(page){
+        const devPDF = new HTMLToPDF(page);
+        const newProf = devPDF.convert()
+        .then((buffer) => {
+            this.writeFile(buffer);
+            console.log("Success")
+        })
+        .catch((err) => {
+            console.log("I sense a disturbance in the force")
+        })
+    };
    // openPDF(){}
 }
 

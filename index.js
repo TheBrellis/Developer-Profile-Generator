@@ -24,7 +24,6 @@ promptUser()
     .then((answers) => {
         const profile = new BuildProfile(answers);
         profile.buildHTML();
-        profile.toPDF();
     })
  
 
