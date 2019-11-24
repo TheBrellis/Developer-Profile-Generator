@@ -3,6 +3,7 @@ const fs = require("fs");
 const util = require("util");
 const axios = require("axios");
 const HTMLToPDF = require('convert-html-to-pdf');
+const open = require("open");
 const puppeteer = require('puppeteer');
 const writeFileAsync = util.promisify(fs.writeFile);
 //////////////////////////////////////////////////////
@@ -10,14 +11,6 @@ class BuildProfile {
     constructor(answers){
         this.color = answers.color.toLowerCase();
         this.user = answers.user;
-    }
-    writeFile(newProf){
-        fs.writeFile("Dev-Profile.pdf",newProf, (err) => {
-            if(err) {
-                throw err;
-            }
-        console.log("Profile has been saved!");
-        });
     }
     buildHTML(){
         const queryUrl = `https://api.github.com/users/${this.user}`
@@ -34,14 +27,12 @@ class BuildProfile {
                 blog: res.data.blog,
                 bio: res.data.bio,
                 numRepos: res.data.public_repos,
-                gitStars: 1000000, /// ask john for help
+                gitStars: 100, /// need a second api call?
                 followers: res.data.followers,
                 following: res.data.following
             };
-            ;
            const page = generateHTML(data);
            this.toPDF(page);
-           
         }).catch((err) => {
             console.log(err)
         });
@@ -50,14 +41,23 @@ class BuildProfile {
         const devPDF = new HTMLToPDF(page);
         const newProf = devPDF.convert()
         .then((buffer) => {
-            this.writeFile(buffer);
-            console.log("Success")
+            this.publishProf(buffer);
+            console.log("Success");
         })
         .catch((err) => {
-            console.log("I sense a disturbance in the force")
+            console.log("I sense a disturbance in the force");
         })
     };
-   // openPDF(){}
+    publishProf(newProf){
+        fs.writeFile("Dev-Profile.pdf",newProf, (err) => {
+            if(err) {
+                throw err;
+            };
+        console.log("Profile has been saved!");
+        });
+        open("Dev-Profile.pdf");
+    };
+    
 }
 
 module.exports = BuildProfile;
