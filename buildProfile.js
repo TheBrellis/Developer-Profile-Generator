@@ -5,7 +5,7 @@ const axios = require("axios");
 const writeFileAsync = util.promisify(fs.writeFile);
 //////////////////////////////////////////////////////
 class BuildProfile {
-    constructor(answers,generateHTML){
+    constructor(answers){
         this.color = answers.color.toLowerCase();
         this.user = answers.user;
     }
@@ -24,14 +24,23 @@ class BuildProfile {
                 blog: res.data.blog,
                 bio: res.data.bio,
                 numRepos: res.data.public_repos,
-                gitStars: 1000000,
+                gitStars: 1000000, /// ask john for help
                 followers: res.data.followers,
                 following: res.data.following
             };
             ;
            const page = generateHTML(data);
+           this.writeFile(page);
         }).catch((err) => {
             console.log(err)
+        });
+    }
+    writeFile(page){
+        fs.writeFile("Dev-Profile.html",page, (err) => {
+            if(err) {
+                throw err;
+            }
+        console.log("Profile has been saved!");
         });
     }
     ///convertToPDF(){}

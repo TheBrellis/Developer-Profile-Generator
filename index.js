@@ -43,6 +43,3 @@ promptUser()
 
 
 
-function writeToFile(fileName, data) {
- 
-}
