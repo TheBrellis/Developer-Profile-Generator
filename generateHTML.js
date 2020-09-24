@@ -245,7 +245,7 @@ const colors = {
                     <div class="col">
                         <div class="card">
                             <h4>GitHub Stars</h4>
-                            <h4>${data.gitStars}</h4>
+                            <h4>${data.gitStarsResult}</h4>
                         </div>
                     </div>
                     <div class="col">

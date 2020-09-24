@@ -27,10 +27,11 @@ class BuildProfile {
                 blog: res.data.blog,
                 bio: res.data.bio,
                 numRepos: res.data.public_repos,
-                gitStars: 100, /// need a second api call?
+                gitStars: res.data.starred_url,  //no git stars in GitHub api response
                 followers: res.data.followers,
                 following: res.data.following
             };
+        // a sync function call here so that gitStars api call executes and then the data object can be updated to include gitStarsResult
            const page = generateHTML(data);
            this.toPDF(page);
         }).catch((err) => {
