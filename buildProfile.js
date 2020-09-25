@@ -27,10 +27,11 @@ class BuildProfile {
                 blog: res.data.blog,
                 bio: res.data.bio,
                 numRepos: res.data.public_repos,
-                gitStars: 100, /// need a second api call?
+                gitStars: 12358, // no stars in github api response
                 followers: res.data.followers,
                 following: res.data.following
             };
+        
            const page = generateHTML(data);
            this.toPDF(page);
         }).catch((err) => {
